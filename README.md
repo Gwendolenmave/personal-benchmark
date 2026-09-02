@@ -860,8 +860,3 @@ truthfulness gate
 ## Credits
 
 Created with **AmeliaGPT**.
-
-这份教程的写法延续了同一组实践教程的结构与经验：
-
-- [`relay-between-agents`](https://github.com/Gwendolenmave/relay-between-agents)
-- [`chat-to-merge`](https://github.com/Gwendolenmave/chat-to-merge)
