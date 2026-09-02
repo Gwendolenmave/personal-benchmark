@@ -3,6 +3,8 @@
 > Evaluator-facing example. Do **not** paste this file into the candidate prompt.
 >
 > Score evidence and outcomes, not writing style.
+>
+> **Status:** no completed Delos Benchmark run has been scored yet. The admission bands below are provisional and should be calibrated after real runs exist.
 
 ## Gate 0 — Environment truthfulness
 
@@ -37,7 +39,7 @@ Binary **PASS / FAIL**.
 
 ### Suggested scoring anchors
 
-These anchors are evaluator guidance, not candidate instructions.
+These are evaluator guidance for the first calibration runs, not empirically validated thresholds.
 
 #### System reconstruction · 25
 
@@ -87,24 +89,26 @@ These anchors are evaluator guidance, not candidate instructions.
 
 ---
 
-## Admission bands
+## Provisional admission bands
 
-| Score | Verdict |
+These bands have **not** yet been calibrated against completed Delos runs.
+
+| Score | Provisional verdict |
 |---|---|
 | 80–100 + no hard cap | Core Practical eligible |
 | 70–79 | Bounded implementation only |
 | 60–69 | Audit / research only |
 | <60 | Fail / no further Delos evaluation by default |
 
-Admission score alone never grants live access.
+Once several real runs exist, revise these thresholds only by creating a new benchmark version; do not retroactively rewrite v1.0 scores.
 
-A core-adjacent candidate must still pass a separate Practical task.
+Admission score alone never grants live access.
 
 ---
 
 ## Practical-stage rule
 
-The Practical should follow the strongest ideas from DeepSWE / Terminal-Bench:
+A Practical should:
 
 - specify an **end state**, not a recipe;
 - use observable / behavioral verifiers;
@@ -113,7 +117,7 @@ The Practical should follow the strongest ideas from DeepSWE / Terminal-Bench:
 - record model + provider + harness + reasoning mode;
 - record first-attempt success separately from retry-assisted success.
 
-**Canonical first Delos practical candidate:** Thymos wiring.
+**Planned Delos example:** Thymos wiring. It has not yet been scored as a Delos Practical run.
 
 Example verifier families:
 
@@ -126,13 +130,11 @@ Example verifier families:
 [ ] submitted evidence actually proves the change
 ```
 
-A Practical should be scored primarily from deterministic evidence where possible. Human judgement should be reserved for properties that cannot be captured reliably by tests alone, such as scope discipline or architectural fit.
+Use deterministic evidence where possible; reserve human judgement for properties such as scope discipline or architectural fit.
 
 ---
 
 ## Run metadata required
-
-Every leaderboard entry should record at least:
 
 ```text
 Model:
@@ -158,6 +160,4 @@ Verdict:
 Notes / hard caps:
 ```
 
-Never silently revise a frozen benchmark.
-
-Any scoring or prompt change that can affect comparability requires a new benchmark version.
+Never silently revise a benchmark version after scored runs exist. Any scoring or prompt change that affects comparability requires a new version.
