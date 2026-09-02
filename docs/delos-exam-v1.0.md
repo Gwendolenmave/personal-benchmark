@@ -1,8 +1,8 @@
 # Delos Benchmark v1.0 — Canonical Exam
 
-> Candidate-facing frozen example used to evaluate a coding Agent against the Delos project.
+> Candidate-facing example prepared for evaluating coding agents against the Delos project.
 >
-> For your own project, replace the repository path, domain-specific modules, and product-judgement section while preserving the evaluation structure.
+> No completed Delos Benchmark run has been scored yet. For another project, replace the repository path, domain-specific modules, and product-judgement section while preserving the evaluation structure.
 
 ## 1 — Enter Delos
 
