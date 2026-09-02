@@ -1,142 +1,79 @@
 # Agent Scoreboard
 
-This file is an example of how to keep **public benchmark anchors** separate from **your own project benchmark results**.
+This file separates **public benchmark references** from **Delos project-specific runs**.
 
-Do not numerically convert one benchmark into another.
+Public scores are context only. Never convert them into a Delos score.
 
-A DeepSWE score of 70% does **not** mean a Delos score of 70/100.
-
-Snapshot date: **2026-09-03**
+Snapshot checked: **2026-09-03**
 
 ---
 
 ## Public reference — DeepSWE v1.1
 
-DeepSWE currently evaluates 113 original long-horizon software-engineering tasks and runs leaderboard models on **mini-swe-agent** for consistency.
+Official source: <https://deepswe.datacurve.ai/>
 
-Selected current results:
+DeepSWE v1.1 currently has 113 original long-horizon software-engineering tasks. Leaderboard models are run on mini-swe-agent for consistency.
 
-| Model / reasoning | Score | Avg output tokens | Avg agent steps |
-|---|---:|---:|---:|
-| Gemini 3.8 Flash [high] | 74% ± 1% | 143k | 166 |
-| Claude Opus 5 [max] | 74% ± 4% | 118k | 99 |
-| GPT-5.6 Sol [max] | 73% ± 3% | 60k | 61 |
-| Claude Fable 5 [max] | 70% ± 4% | 119k | 88 |
-| GLM-5.3 [max] | 69% ± 3% | 80k | 124 |
-| Kimi K3 [max] | 69% ± 5% | 81k | 98 |
-| GLM-5.3-Flash [max] | 63% ± 4% | 73k | 123 |
-| Muse Spark 1.2 [xhigh] | 55% ± 2% | 99k | 101 |
+Selected official results checked on 2026-09-03:
 
-Source: <https://deepswe.datacurve.ai/>
+| Model / reasoning | Score |
+|---|---:|
+| Gemini 3.8 Flash [high] | 74% ± 1% |
+| Claude Opus 5 [max] | 74% ± 4% |
+| GPT-5.6 Sol [max] | 73% ± 3% |
+| GLM-5.3 [max] | 69% ± 3% |
+| GLM-5.3-Flash [max] | 63% ± 4% |
+| Muse Spark 1.2 [xhigh] | 55% ± 2% |
 
-Use these as **priors**, not as Delos admission scores.
-
-A model can have a strong public coding score and still misunderstand your project's ownership, live/candidate boundaries, historical state, or product constraints.
+These are **public benchmark anchors**, not Delos results.
 
 ---
 
-## Public reference — Terminal-Bench 4.0.0
+## Public reference — Terminal-Bench
 
-Terminal-Bench is especially useful as a reminder that an Agent benchmark measures the **model + agent/harness** combination rather than a naked language model.
+Official sources:
 
-Selected public Harbor runs:
-
-| Model | Agent / harness | Avg reward | Trials | Errors | Retries |
-|---|---|---:|---:|---:|---:|
-| Claude Opus 5 | Claude Code | 0.53 | 330 | 6 | 3 |
-| GPT-5.6 Sol | Codex | 0.37 | 330 | 6 | 8 |
-| GPT-5.6 Terra | Codex | 0.22 | 330 | 8 | 7 |
-| Claude Sonnet 5 | Claude Code | 0.12 | 330 | 37 | 2 |
-
-Sources:
-
-- <https://hub.harborframework.com/datasets/terminal-bench/terminal-bench/latest?leaderboard=4-0-0&tab=leaderboard>
 - <https://github.com/harbor-framework/terminal-bench>
+- <https://hub.harborframework.com/>
 
-Again, these are contextual anchors only.
+Terminal-Bench is useful here mainly because its results are tied to a **model + agent/harness + environment configuration** rather than a naked model name.
+
+This example file intentionally does **not** copy a Terminal-Bench leaderboard snapshot. Public leaderboards change, and any numerical reference should be checked against the live official source when used.
 
 ---
 
-## Delos Benchmark leaderboard
+## Delos Benchmark runs
 
-This table records **project-specific** runs.
+**No completed Delos Benchmark runs have been scored yet.**
 
-Never fill a score from public benchmark intuition. A row belongs here only after the model actually runs the frozen Delos benchmark version.
+Do not add a model to this table until it has actually completed the named frozen benchmark version and been graded.
 
 | Model | Provider | Harness | Reasoning | Benchmark | Preflight | Admission | Practical | Retries | Verdict |
 |---|---|---|---|---|---|---:|---|---:|---|
-| Muse Spark 1.3 | OpenCode Free | OpenCode | TBD | Delos v1.0 | pending | — | — | — | first candidate |
-
-The first planned Delos candidate is **Muse Spark 1.3 via OpenCode**.
-
-Suggested later comparison candidates may include:
-
-```text
-GLM-5.3-Flash + OpenCode
-Muse Spark 1.3 + OpenCode
-dots3-note + OpenCode
-other model/harness combinations
-```
-
-Keep old rows when new models arrive. The point of a benchmark notebook is longitudinal comparison, not replacing yesterday's result with today's favorite model.
 
 ---
 
-## Why the table stores harness metadata
-
-Agent benchmarks do not test a naked language model.
-
-A useful mental model is:
-
-```text
-observed capability
-=
-model
-+ provider behavior
-+ reasoning configuration
-+ agent harness
-+ tools
-+ environment
-```
-
-Therefore do not collapse:
-
-```text
-GPT-5.6 Sol + Codex
-```
-
-into merely:
-
-```text
-GPT-5.6 Sol
-```
-
-if your goal is to compare real coding-Agent performance.
-
-The same principle applies to personal benchmarks. If you change OpenCode → Codex, provider routing, reasoning mode, tool permissions, or repository access, record the new run separately.
-
----
-
-## Suggested run record
+## Run record template
 
 ```text
 Model:
 Provider:
 Harness:
-Reasoning:
+Reasoning mode:
 Benchmark version:
 Date:
 
-Preflight:
+Preflight: PASS / FAIL
 
 System reconstruction:
-Problem discovery:
-OSS transfer:
-Domain / product judgement:
+Verified problem discovery:
+Open-source transfer:
+Product / domain judgement:
 Calibration & restraint:
 Total:
 
-First attempt:
+Practical attempted: YES / NO
+First attempt success: YES / NO / N/A
 Retries:
 Practical result:
 
@@ -147,18 +84,9 @@ Notes:
 
 ---
 
-## Version rule
+## Rules
 
-If you later change any of these:
-
-```text
-candidate prompt
-scoring weights
-hard caps
-hidden Practical verifiers
-admission thresholds
-```
-
-create a new benchmark version instead of overwriting the old one.
-
-A leaderboard is only meaningful when the rows were produced by comparable exams.
+- Never infer a Delos score from DeepSWE, SWE-bench, Terminal-Bench, or subjective impressions.
+- Record a new run when provider, harness, reasoning mode, tool access, or benchmark version changes materially.
+- Keep old completed runs; do not rewrite history when a new model becomes the favorite.
+- If the exam, scoring weights, hard caps, practical verifier, or admission thresholds change, create a new benchmark version.
