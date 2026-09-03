@@ -1,20 +1,12 @@
 # Agent Scoreboard
 
-This file separates **public benchmark references** from **Delos project-specific runs**.
-
-Public scores are context only. Never convert them into a Delos score.
+Public benchmark scores are context only. Never convert them into a Delos score.
 
 Snapshot checked: **2026-09-03**
-
----
 
 ## Public reference — DeepSWE v1.1
 
 Official source: <https://deepswe.datacurve.ai/>
-
-DeepSWE v1.1 currently has 113 original long-horizon software-engineering tasks. Leaderboard models are run on mini-swe-agent for consistency.
-
-Selected official results checked on 2026-09-03:
 
 | Model / reasoning | Score |
 |---|---:|
@@ -27,8 +19,6 @@ Selected official results checked on 2026-09-03:
 
 These are **public benchmark anchors**, not Delos results.
 
----
-
 ## Public reference — Terminal-Bench
 
 Official sources:
@@ -36,22 +26,36 @@ Official sources:
 - <https://github.com/harbor-framework/terminal-bench>
 - <https://hub.harborframework.com/>
 
-Terminal-Bench is useful here mainly because its results are tied to a **model + agent/harness + environment configuration** rather than a naked model name.
-
-This example file intentionally does **not** copy a Terminal-Bench leaderboard snapshot. Public leaderboards change, and any numerical reference should be checked against the live official source when used.
-
----
+Terminal-Bench is useful here mainly because agent results depend on the **model + harness + environment**, not a naked model name. This file intentionally does not copy a moving Terminal-Bench leaderboard snapshot.
 
 ## Delos Benchmark runs
 
-**No completed Delos Benchmark runs have been scored yet.**
+| Model | Provider | Harness | Reasoning | Benchmark | Preflight | Admission | Practical | Verdict |
+|---|---|---|---|---|---|---:|---|---|
+| Muse Spark 1.3 | OpenCode Free | OpenCode | not reported | Delos v1.0 | PASS | **80/100** | pending | Core Practical eligible |
 
-Do not add a model to this table until it has actually completed the named frozen benchmark version and been graded.
+### Muse Spark 1.3 — 2026-09-03
 
-| Model | Provider | Harness | Reasoning | Benchmark | Preflight | Admission | Practical | Retries | Verdict |
-|---|---|---|---|---|---|---:|---|---:|---|
+| Dimension | Score |
+|---|---:|
+| System reconstruction | 24 / 25 |
+| Verified problem discovery | 23 / 30 |
+| Open-source transfer | 14 / 15 |
+| Companion capability | 7 / 15 |
+| Calibration & restraint | 12 / 15 |
+| **Total** | **80 / 100** |
 
----
+Notes:
+
+- Strong source-level reconstruction and live/candidate boundary awareness.
+- Core findings were source-grounded; some intentionally parked/default-off mechanisms were classified too aggressively as current defects.
+- Public-source transfer was unusually detailed and largely verifiable.
+- Largest deduction: the proposed companion feature, "gentle open-loop follow-through", substantially overlaps existing Thymos open-loop, `continue_user_thread`, and `care_check_in` machinery. Muse noticed the overlap but still selected a near-duplicate feature.
+- Local audit HEAD was four commits behind the remote default branch; the important D0 finding was rechecked after grading and still held, but the mismatch should have been treated more explicitly as a calibration risk.
+- No hard cap triggered.
+- Admission result permits a **separate bounded Practical**; it does not grant live/core authority.
+
+Audit report: `Gwendolenmave/agentic-workflow/estate/DELOS-BENCHMARK-MUSE-SPARK-1.3-20260903.md` @ `3865187bf2133351ca667c9c3e07e2befcfa8826`.
 
 ## Run record template
 
@@ -81,8 +85,6 @@ Hard caps:
 Verdict:
 Notes:
 ```
-
----
 
 ## Rules
 
